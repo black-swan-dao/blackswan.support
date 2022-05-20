@@ -1,21 +1,14 @@
 <script>
   import { renderBlockText } from "$lib/modules/sanity.js"
   import has from "lodash/has.js"
-  import slugify from "slugify"
-  import { onMount } from "svelte"
-
   export let page
 </script>
+
+<h1>CYGNET</h1>
 
 {#if has(page, "content.content")}
   <div class="about">
     {@html renderBlockText(page.content.content)}
-  </div>
-{/if}
-
-{#if has(page, "faq.content")}
-  <div class="about">
-    {@html renderBlockText(page.faq.content)}
   </div>
 {/if}
 

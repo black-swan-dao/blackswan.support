@@ -2,21 +2,15 @@
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
   import has from "lodash/has.js"
   import get from "lodash/get.js"
-  export let page
   export let researchFeed
+  export let page
 </script>
 
-<h1>Black Swan</h1>
+<h1>Research feed</h1>
 
-{#if has(page, "byline")}
-  <div class="byline">
-    {@html renderBlockText(page.byline.content)}
-  </div>
-{/if}
-
-{#if has(page, "callToAction")}
-  <div class="call-to-action">
-    {@html renderBlockText(page.callToAction.content)}
+{#if has(page, "content.content")}
+  <div class="about">
+    {@html renderBlockText(page.content.content)}
   </div>
 {/if}
 
@@ -56,15 +50,30 @@
   </div>
 {/if}
 
-{#if has(page, "contact.content")}
-  <div class="contact">
-    {@html renderBlockText(page.contact.content)}
-  </div>
-  <hr />
-{/if}
-
 <style lang="scss">
   @import "src/lib/style/variables.scss";
+
+  .spawn {
+    .form-section {
+      margin-bottom: 1rem;
+
+      .sub-section {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .details {
+    margin-top: 20px;
+    font-size: 10px;
+    font-family: "Courier New", Courier, monospace;
+    padding: 10px;
+    background: lightgray;
+  }
+
+  .result-section {
+    margin-bottom: 20px;
+  }
 
   .research-feed {
     border-top: 1px solid white;
