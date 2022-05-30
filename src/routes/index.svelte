@@ -92,7 +92,7 @@
 
   .above-fold {
     background-color: rgb(183, 255, 0);
-    background-image: url(stardust.png);
+    background-image: url("/stardust.png");
 
     .inner {
       width: 900px;
@@ -213,7 +213,7 @@
     margin-top: 60px;
     background: black;
     color: white;
-    background-image: url(stardust.png);
+    background-image: url("/stardust.png");
     user-select: none;
 
     .inner {

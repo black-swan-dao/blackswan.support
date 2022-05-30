@@ -20,8 +20,7 @@
   html {
     font-family: $NORMY;
     background-color: rgb(183, 255, 0);
-    background-image: url(stardust.png);
-    // background-attachment: fixed;
+    background-image: url("/stardust.png");
     color: white;
     color: black;
     font-size: 16px;
