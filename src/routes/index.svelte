@@ -16,7 +16,7 @@
         <span class="logo">BLACK SWAN</span> is a Berlin-based collective
         pursuing horizontal and decentralized approaches to the traditional art
         world templates for art making.
-        <a href="/about" sveltekit:prefetch class="more-button">…</a>
+        <a href="/about" sveltekit:prefetch class="more-button">→</a>
       </div>
     {/if}
 
@@ -70,7 +70,9 @@
         {:else}
           <a href={item.link} target="_blank" class="item link">
             <div class="title">* {item.title}</div>
-            <div class="source">(SOURCE)</div>
+            {#if item.source}
+              <div class="source">{item.source}<span class="icon">↗</span></div>
+            {/if}
           </a>
         {/if}
       {/each}
@@ -97,6 +99,7 @@
     left: 5px;
   }
 
+  // rgb(183, 255, 0)
   .above-fold {
     background-color: rgb(183, 255, 0);
     background-image: url("/stardust.png");
@@ -262,13 +265,13 @@
     display: inline-block;
     padding-left: 20px;
     padding-right: 20px;
-    height: 50px;
-    line-height: 25px;
-    background: black;
+    border: 1px solid black;
     color: black;
-    border-radius: 20px;
-    position: relative;
-    top: -10px;
+    font-size: 16px;
     display: none;
+    // border-radius: 20px;
+    // position: relative;
+    // top: -10px;
+    // display: none;
   }
 </style>
