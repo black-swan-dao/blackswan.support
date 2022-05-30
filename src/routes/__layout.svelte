@@ -1,5 +1,4 @@
 <script>
-  import Menu from "$lib/components/menu.svelte"
   import Footer from "$lib/components/footer.svelte"
 </script>
 
@@ -19,19 +18,17 @@
 
   body,
   html {
-    font-family: "Space Mono", monospace;
-    background: black;
+    font-family: $NORMY;
+    background-color: rgb(183, 255, 0);
+    background-image: url(stardust.png);
+    // background-attachment: fixed;
     color: white;
-    font-size: 24px;
-  }
-
-  main {
-    width: 900px;
-    max-width: 90vw;
-    min-height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 60px;
+    color: black;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.3em;
   }
 
   a {
