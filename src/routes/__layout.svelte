@@ -1,11 +1,13 @@
 <script>
   import Menu from "$lib/components/menu.svelte"
+  import Footer from "$lib/components/footer.svelte"
 </script>
 
-<Menu />
+<!-- <Menu /> -->
 
 <main>
   <slot />
+  <Footer />
 </main>
 
 <style lang="scss" global>
@@ -17,20 +19,19 @@
 
   body,
   html {
-    // font-family: Helvetica, sans-serif;
     font-family: "Space Mono", monospace;
     background: black;
     color: white;
-    font-size: 14px;
+    font-size: 24px;
   }
 
   main {
-    width: 800px;
+    width: 900px;
+    max-width: 90vw;
     min-height: 100vh;
     margin-left: auto;
     margin-right: auto;
-    max-width: 90vw;
-    padding-top: 40px;
+    padding-top: 60px;
   }
 
   a {

@@ -61,5 +61,7 @@
     align-items: center;
     text-align: center;
     font-size: 64px;
+    user-select: none;
+    font-weight: bold;
   }
 </style>
