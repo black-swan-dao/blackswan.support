@@ -2,8 +2,6 @@
   import Footer from "$lib/components/footer.svelte"
 </script>
 
-<!-- <Menu /> -->
-
 <main>
   <slot />
   <Footer />

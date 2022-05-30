@@ -14,16 +14,16 @@
 
   footer {
     margin-top: 40px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
     display: flex;
     user-select: none;
-
     width: 900px;
     max-width: 95vw;
     margin-left: auto;
     margin-right: auto;
     border-top: 1px solid black;
     padding: 20px;
+    font-size: 12px;
 
     .item {
       margin-right: 20px;

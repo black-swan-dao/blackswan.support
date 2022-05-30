@@ -32,14 +32,19 @@
   .header {
     padding: 40px;
     border-bottom: 1px solid black;
-  }
 
-  .image {
-    padding: 40px;
+    @include screen-size("small") {
+      padding: 20px;
+    }
   }
 
   .about {
     padding: 40px;
+
+    @include screen-size("small") {
+      padding: 20px;
+    }
+
     img {
       max-width: 100%;
       max-height: 600px;

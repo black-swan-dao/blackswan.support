@@ -13,7 +13,7 @@
     input {
       width: 100%;
       font-family: $NORMY;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.7);
       font-size: 16px;
       margin-bottom: 20px;
       height: 50px;
@@ -33,6 +33,11 @@
       border: none;
       border: 1px solid black;
       cursor: pointer;
+      transition: background 0.3s $transition;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
     }
   }
 </style>

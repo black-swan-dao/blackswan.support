@@ -31,17 +31,20 @@
           Cygnet is Vivamus magna justo, lacinia eget consectetur sed, convallis
           at tellus.
         </div>
+        <a href="https://cyg.network" target="_blank" class="link">
+          Go to Cygnet<span class="icon">↗</span>
+        </a>
       </div>
     </div>
 
     <div class="links" in:fade={{ duration: 200, delay: 400 }}>
-      <a href="https://discord.com" target="_blank" class="discord">
+      <a href="https://discord.com" target="_blank" class="item discord">
         Discord<span class="icon">↗</span>
       </a>
       <a
         href="https://twitter.com/blackswan_dao"
         target="_blank"
-        class="twitter"
+        class=" item twitter"
       >
         Twitter<span class="icon">↗</span>
       </a>
@@ -56,24 +59,22 @@
         <span class="title">** Research feed **</span>
       </div>
       {#each researchFeed as item}
-        <div class="item">
-          {#if item.fullPage}
-            <a
-              href={"research-feed/" + get(item, "slug.current", "")}
-              sveltekit:prefetch
-              class="title"
-            >
-              * {item.title}
-            </a>
-          {:else}
-            <a href={item.link} target="_blank" class="title">
-              * {item.title}
-            </a>
+        {#if item.fullPage}
+          <a
+            href={"research-feed/" + get(item, "slug.current", "")}
+            sveltekit:prefetch
+            class="item link"
+          >
+            <div class="title">* {item.title}</div>
+          </a>
+        {:else}
+          <a href={item.link} target="_blank" class="item link">
+            <div class="title">* {item.title}</div>
             <div class="source">(SOURCE)</div>
-          {/if}
-        </div>
+          </a>
+        {/if}
       {/each}
-      <div class="item">
+      <div class="item link">
         <div class="title">. . . Load more</div>
       </div>
     </div>
@@ -90,6 +91,12 @@
 <style lang="scss">
   @import "src/lib/style/variables.scss";
 
+  .icon {
+    position: relative;
+    top: -3px;
+    left: 5px;
+  }
+
   .above-fold {
     background-color: rgb(183, 255, 0);
     background-image: url("/stardust.png");
@@ -99,7 +106,6 @@
       max-width: 95vw;
       margin-left: auto;
       margin-right: auto;
-      // padding-top: 40px;
     }
   }
 
@@ -112,6 +118,11 @@
     user-select: none;
     border-bottom: 1px solid black;
     padding: 40px;
+
+    @include screen-size("small") {
+      font-size: 26px;
+      padding: 20px;
+    }
   }
 
   .call-to-action {
@@ -121,6 +132,61 @@
     @include screen-size("small") {
       flex-wrap: wrap;
     }
+
+    .mailing-list {
+      width: 50%;
+      border-right: 1px solid black;
+      padding: 40px;
+
+      @include screen-size("small") {
+        width: 100%;
+        border-right: unset;
+        border-bottom: 1px solid black;
+        min-height: unset;
+        padding: 20px;
+      }
+
+      .header {
+        margin-bottom: 10px;
+      }
+    }
+
+    .cygnet {
+      width: 50%;
+      padding: 40px;
+
+      .header {
+        margin-bottom: 10px;
+      }
+
+      .link {
+        display: block;
+        color: inherit;
+        text-align: center;
+        line-height: 50px;
+        width: 100%;
+        font-family: $NORMY;
+        background: transparent;
+        color: black;
+        font-size: 16px;
+        margin-bottom: 10px;
+        height: 50px;
+        border: none;
+        border: 1px solid black;
+        cursor: pointer;
+        transition: background 0.3s $transition;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      @include screen-size("small") {
+        width: 100%;
+        min-height: unset;
+        padding: 20px;
+      }
+    }
   }
 
   .links {
@@ -128,84 +194,25 @@
     border-bottom: 1px solid black;
     user-select: none;
 
-    .icon {
-      position: relative;
-      top: -3px;
-      left: 5px;
-    }
-
-    .discord {
-      width: 50%;
-      border-right: 1px solid black;
-      padding: 40px;
-      display: block;
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .twitter {
+    .item {
       width: 50%;
       padding: 40px;
       display: block;
       color: inherit;
       text-decoration: none;
-    }
-  }
-
-  .mailing-list {
-    width: 50%;
-    border-right: 1px solid black;
-    padding: 40px;
-
-    @include screen-size("small") {
-      width: 100%;
-      border-right: unset;
-      border-bottom: 1px solid black;
-      min-height: unset;
-    }
-
-    .header {
-      margin-bottom: 10px;
-    }
-  }
-
-  .cygnet {
-    width: 50%;
-    padding: 40px;
-
-    @include screen-size("small") {
-      width: 100%;
-      min-height: unset;
-    }
-  }
-
-  .form {
-    display: flex;
-    flex-direction: column;
-
-    input {
-      width: 100%;
-      font-family: $NORMY;
-      background: rgba(255, 255, 255, 0.9);
-      font-size: 16px;
-      margin-bottom: 20px;
-      height: 50px;
-      outline: none;
-      border: none;
-      padding-left: 10px;
-    }
-
-    button {
-      width: 100%;
-      font-family: $NORMY;
-      background: transparent;
-      color: black;
-      font-size: 16px;
-      margin-bottom: 10px;
-      height: 50px;
-      border: none;
-      border: 1px solid black;
       cursor: pointer;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      &.discord {
+        border-right: 1px solid black;
+      }
+
+      @include screen-size("small") {
+        padding: 20px;
+      }
     }
   }
 
@@ -215,6 +222,10 @@
     color: white;
     background-image: url("/stardust.png");
     user-select: none;
+
+    @include screen-size("small") {
+      margin-top: 40px;
+    }
 
     .inner {
       width: 900px;
@@ -230,9 +241,19 @@
       display: flex;
       justify-content: space-between;
 
+      &.link {
+        cursor: pointer;
+        &:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      .source {
+        font-size: 12px;
+      }
+
       &.header {
         text-transform: uppercase;
-        // color: rgb(183, 255, 0);
       }
     }
   }
