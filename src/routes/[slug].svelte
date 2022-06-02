@@ -13,26 +13,6 @@
   <div class="header" in:fade={{ duration: 200, delay: 200 }}>
     <!-- TITLE -->
     <h1>{page.title}</h1>
-    <!-- DATE -->
-    {#if page.date}
-      <div class="date">{page.date}</div>
-    {/if}
-    <!-- AUTHORS -->
-    {#if page.authors && page.authors.length > 0}
-      <div class="authors">
-        {#each page.authors as author}
-          <span>{author}</span>
-        {/each}
-      </div>
-    {/if}
-    <!-- TAGS -->
-    {#if page.tags && page.tags.length > 0}
-      <div class="tags">
-        {#each page.tags as tag}
-          <span>{tag}</span>
-        {/each}
-      </div>
-    {/if}
   </div>
 
   {#if has(page, "content.content")}

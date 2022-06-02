@@ -1,88 +1,125 @@
 <script>
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
-  import has from "lodash/has.js"
   import get from "lodash/get.js"
+  import { fade } from "svelte/transition"
   export let researchFeed
-  export let page
 </script>
 
-<h1>Research feed</h1>
-
-{#if has(page, "content.content")}
-  <div class="about">
-    {@html renderBlockText(page.content.content)}
+<div class="single">
+  <div class="return" in:fade={{ duration: 200 }}>
+    <a href="/" sveltekit:prefetch class="back">←</a>
   </div>
-{/if}
 
-{#if researchFeed}
   <div class="research-feed">
-    {#each researchFeed as item}
-      <div class="item">
+    <div class="inner">
+      <div class="item header">
+        <span class="title">** Research feed **</span>
+      </div>
+      {#each researchFeed as item}
         {#if item.fullPage}
           <a
             href={"research-feed/" + get(item, "slug.current", "")}
             sveltekit:prefetch
-            class="title"
+            class="item link"
           >
-            <img
-              src={urlFor(item.mainImage.asset)
-                .quality(90)
-                .width(180)
-                .height(180)
-                .url()}
-            />
-            {item.title}
+            <div class="title">* {item.title}</div>
           </a>
         {:else}
-          <a href={item.link} target="_blank" sveltekit:prefetch class="title">
-            <img
-              src={urlFor(item.mainImage.asset)
-                .quality(90)
-                .width(180)
-                .height(180)
-                .url()}
-            />
-            {item.title}
+          <a href={item.link} target="_blank" class="item link">
+            <div class="title">* {item.title}</div>
+            {#if item.source}
+              <div class="source">{item.source}<span class="icon">↗</span></div>
+            {/if}
           </a>
         {/if}
-      </div>
-    {/each}
+      {/each}
+    </div>
   </div>
-{/if}
+</div>
 
 <style lang="scss">
   @import "src/lib/style/variables.scss";
 
-  .spawn {
-    .form-section {
-      margin-bottom: 1rem;
+  .single {
+    width: 900px;
+    max-width: 95vw;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-      .sub-section {
-        margin-bottom: 0.5rem;
+  .return {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .back {
+      display: inline-block;
+      padding-left: 20px;
+      padding-right: 20px;
+      color: inherit;
+      text-align: center;
+      line-height: 25px;
+      font-family: $NORMY;
+      background: transparent;
+      color: black;
+      font-size: 16px;
+      margin-bottom: 10px;
+      height: 30px;
+      border: none;
+      border: 1px solid black;
+      cursor: pointer;
+      transition: background 0.3s $transition;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
       }
+    }
+    @include screen-size("small") {
+      padding-left: 20px;
+      padding-right: 20px;
     }
   }
 
-  .details {
-    margin-top: 20px;
-    font-size: 10px;
-    font-family: "Courier New", Courier, monospace;
-    padding: 10px;
-    background: lightgray;
-  }
-
-  .result-section {
-    margin-bottom: 20px;
-  }
-
   .research-feed {
-    border-top: 1px solid white;
+    margin-top: 20px;
+    color: black;
+    user-select: none;
+    border-top: 1px solid black;
+
+    @include screen-size("small") {
+      margin-top: 40px;
+    }
+
+    .inner {
+      width: 900px;
+      max-width: 95vw;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 40px;
+    }
 
     .item {
-      margin-bottom: 1rem;
-      border-bottom: 1px solid white;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      border-bottom: 1px solid black;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+
+      &.link {
+        cursor: pointer;
+        &:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      .source {
+        font-size: 12px;
+      }
+
+      &.header {
+        text-transform: uppercase;
+      }
     }
   }
 </style>

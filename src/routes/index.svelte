@@ -1,43 +1,50 @@
 <script>
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
   import MailingListForm from "$lib/components/mailing-list-form.svelte"
-  import { fade } from "svelte/transition"
   import has from "lodash/has.js"
   import get from "lodash/get.js"
-  export let page
+  export let landing
   export let researchFeed
+  console.log(landing)
 </script>
 
 <div class="above-fold">
-  <div class="inner" in:fade={{ duration: 200 }}>
+  <div class="inner">
+    <!-- HEADER IMAGE -->
+    {#if has(landing, "headerImage.asset")}
+      <div class="header-image">
+        <img
+          src={urlFor(landing.headerImage.asset).quality(100).width(900).url()}
+        />
+      </div>
+    {/if}
+
     <!-- BYLINE -->
-    {#if has(page, "byline")}
+    {#if has(landing, "byline.content")}
       <div class="byline">
-        <span class="logo">BLACK SWAN</span> is a Berlin-based collective
-        pursuing horizontal and decentralized approaches to the traditional art
-        world templates for art making.
-        <a href="/about" sveltekit:prefetch class="more-button">→</a>
+        {@html renderBlockText(landing.byline.content)}
       </div>
     {/if}
 
     <!-- CALL-TO-ACTION -->
-    <div class="call-to-action" in:fade={{ duration: 200, delay: 200 }}>
+    <div class="call-to-action">
       <div class="mailing-list">
         <div class="header">Mailing list</div>
         <MailingListForm />
       </div>
       <div class="cygnet">
-        <div class="header">
-          Cygnet is Vivamus magna justo, lacinia eget consectetur sed, convallis
-          at tellus.
-        </div>
+        {#if has(landing, "cygnetCallToAction.content")}
+          <div class="header">
+            {@html renderBlockText(landing.cygnetCallToAction.content)}
+          </div>
+        {/if}
         <a href="https://cyg.network" target="_blank" class="link">
           Go to Cygnet<span class="icon">↗</span>
         </a>
       </div>
     </div>
 
-    <div class="links" in:fade={{ duration: 200, delay: 400 }}>
+    <div class="links">
       <a href="https://discord.com" target="_blank" class="item discord">
         Discord<span class="icon">↗</span>
       </a>
@@ -54,7 +61,7 @@
 
 {#if researchFeed}
   <div class="research-feed">
-    <div class="inner" in:fade={{ duration: 200, delay: 600 }}>
+    <div class="inner">
       <div class="item header">
         <span class="title">** Research feed **</span>
       </div>
@@ -76,18 +83,11 @@
           </a>
         {/if}
       {/each}
-      <div class="item link">
-        <div class="title">. . . Load more</div>
-      </div>
+      <a href="/research-feed" sveltekit:prefetch class="item link">
+        <div class="title">. . . More</div>
+      </a>
     </div>
   </div>
-{/if}
-
-{#if has(page, "contact.content")}
-  <div class="contact">
-    {@html renderBlockText(page.contact.content)}
-  </div>
-  <hr />
 {/if}
 
 <style lang="scss">
@@ -108,6 +108,16 @@
       max-width: 95vw;
       margin-left: auto;
       margin-right: auto;
+      padding-top: 20px;
+    }
+  }
+
+  .header-image {
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 50vh;
     }
   }
 
@@ -120,6 +130,7 @@
     user-select: none;
     border-bottom: 1px solid black;
     padding: 40px;
+    padding-top: 20px;
 
     @include screen-size("small") {
       font-size: 26px;
