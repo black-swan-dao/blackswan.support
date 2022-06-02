@@ -84,7 +84,7 @@
         {/if}
       {/each}
       <a href="/research-feed" sveltekit:prefetch class="item link">
-        <div class="title">. . . More</div>
+        <div class="title">. . . View all</div>
       </a>
     </div>
   </div>
