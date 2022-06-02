@@ -99,10 +99,9 @@
     left: 5px;
   }
 
-  // rgb(183, 255, 0)
   .above-fold {
-    background-color: rgb(183, 255, 0);
-    background-image: url("/stardust.png");
+    background-color: var(--background-color);
+    background-image: url("/dust.png");
 
     .inner {
       width: 900px;
@@ -223,7 +222,7 @@
     margin-top: 60px;
     background: black;
     color: white;
-    background-image: url("/stardust.png");
+    background-image: url("/dust.png");
     user-select: none;
 
     @include screen-size("small") {

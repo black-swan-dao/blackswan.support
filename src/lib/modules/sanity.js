@@ -10,6 +10,7 @@ import blocksToHtml from "@sanity/block-content-to-html"
 import imageUrlBuilder from "@sanity/image-url"
 import get from "lodash/get.js"
 import has from "lodash/has.js"
+import getVideoId from "get-video-id"
 
 const SANITY_PROJECT_ID = import.meta.env.VITE_SANITY_ID
 

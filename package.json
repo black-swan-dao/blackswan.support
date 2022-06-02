@@ -19,6 +19,7 @@
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
     "@sveltejs/adapter-netlify": "^1.0.0-next.56",
+    "get-video-id": "^3.6.4",
     "lodash": "^4.17.21",
     "node-sass": "^7.0.1",
     "slugify": "^1.6.5",
