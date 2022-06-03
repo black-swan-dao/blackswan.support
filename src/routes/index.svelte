@@ -113,6 +113,8 @@
   }
 
   .header-image {
+    padding-left: 20px;
+    padding-right: 20px;
     img {
       display: block;
       margin-left: auto;
@@ -263,6 +265,9 @@
 
       .source {
         font-size: 12px;
+        @include screen-size("small") {
+          display: none;
+        }
       }
 
       &.header {

@@ -4,6 +4,17 @@
   <a href="https://twitter.com/blackswan_dao" target="_blank" class="item">
     Twitter
   </a>
+  <a
+    href="https://www.instagram.com/blackswan_dao/"
+    target="_blank"
+    class="item"
+  >
+    Instagram
+  </a>
+  <a href="https://www.are.na/black-swan-dao" target="_blank" class="item">
+    Are.na
+  </a>
+
   <a href="/mailing-list" sveltekit:prefetch class="item mailing-list">
     Mailing list
   </a>
@@ -25,6 +36,10 @@
     padding: 20px;
     font-size: 12px;
 
+    @include screen-size("small") {
+      flex-direction: column;
+    }
+
     .item {
       margin-right: 20px;
       display: block;
@@ -33,12 +48,6 @@
 
       &:hover {
         text-decoration: underline;
-      }
-
-      &.mailing-list {
-        @include screen-size("small") {
-          display: none;
-        }
       }
     }
   }

@@ -128,6 +128,10 @@
   .byline {
     p {
       margin: 0.5em;
+      @include screen-size("small") {
+        padding: 0;
+        margin: 0;
+      }
     }
   }
 </style>
