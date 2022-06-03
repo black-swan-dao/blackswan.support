@@ -1,5 +1,6 @@
 <script>
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
+  import Metadata from "$lib/components/metadata.svelte"
   import has from "lodash/has.js"
   import { fade } from "svelte/transition"
   export let page
@@ -22,6 +23,8 @@
       .slice(0, -1)
   }
 </script>
+
+<Metadata {page} />
 
 <div class="single">
   <div class="return" in:fade={{ duration: 200 }}>

@@ -1,6 +1,9 @@
 <script>
   import MailingListForm from "$lib/components/mailing-list-form.svelte"
+  import Metadata from "$lib/components/metadata.svelte"
 </script>
+
+<Metadata />
 
 <div class="mailing-list">
   <div class="header">MAILING LIST</div>

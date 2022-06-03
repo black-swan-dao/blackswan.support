@@ -2,6 +2,7 @@
   import Select from "svelte-select"
   import slugify from "slugify"
   import FullFeedItem from "$lib/components/full-feed-item.svelte"
+  import Metadata from "$lib/components/metadata.svelte"
   import { fade } from "svelte/transition"
   import flatten from "lodash/flatten.js"
   import uniq from "lodash/uniq.js"
@@ -39,6 +40,8 @@
   const handleSelect = event => (filterTerm = event.detail)
   const handleClear = () => (filterTerm = undefined)
 </script>
+
+<Metadata />
 
 <div class="single">
   <div class="return" in:fade={{ duration: 200 }}>

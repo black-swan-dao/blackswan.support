@@ -2,11 +2,14 @@
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
   import MailingListForm from "$lib/components/mailing-list-form.svelte"
   import ResearchFeedItem from "$lib/components/research-feed-item.svelte"
+  import Metadata from "$lib/components/metadata.svelte"
   import has from "lodash/has.js"
   export let landing
   export let researchFeed
   console.log(landing)
 </script>
+
+<Metadata />
 
 <div class="above-fold">
   <div class="inner">
