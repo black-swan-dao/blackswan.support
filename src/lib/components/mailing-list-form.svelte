@@ -110,6 +110,7 @@
       outline: none;
       border: none;
       padding-left: 10px;
+      border-radius: 0;
     }
 
     input[type="submit"] {
@@ -120,11 +121,10 @@
       font-size: 16px;
       margin-bottom: 10px;
       height: 50px;
-      border: none;
       border: 1px solid black;
+      border-radius: 0;
       cursor: pointer;
       transition: background 0.3s $transition;
-
       pointer-events: none;
 
       &:hover {
