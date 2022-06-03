@@ -30,7 +30,7 @@
   <meta property="image" content={image} />
   <meta property="og:image" content={image} />
   <meta property="twitter:image" content={image} />
-  <meta property="og:site_name" content="Platform Labor" />
+  <meta property="og:site_name" content="Black Swan" />
 </svelte:head>
 
 <div class="above-fold">
