@@ -8,7 +8,6 @@ export const BASE_URL = 'https://blackswan-support.netlify.app';
 export const DEFAULT_DESCRIPTION = 'Black Swan is a Berlin-based collective pursuing horizontal and decentralized approaches to the traditional art world templates for art making.';
 export const DEFAULT_IMAGE = BASE_URL + '/blackswan.png';
 
-
 // ____
 // ____ Date
 // ___

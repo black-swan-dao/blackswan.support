@@ -2,14 +2,36 @@
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
   import MailingListForm from "$lib/components/mailing-list-form.svelte"
   import ResearchFeedItem from "$lib/components/research-feed-item.svelte"
-  import Metadata from "$lib/components/metadata.svelte"
   import has from "lodash/has.js"
   export let landing
   export let researchFeed
-  console.log(landing)
+  import {
+    BASE_URL,
+    DEFAULT_DESCRIPTION,
+    DEFAULT_IMAGE,
+  } from "$lib/modules/global.js"
+  const title = "Black Swan"
+  const description = DEFAULT_DESCRIPTION
+  const url = BASE_URL
+  const image = DEFAULT_IMAGE
 </script>
 
-<Metadata />
+<svelte:head>
+  <title>{title}</title>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={url} />
+  <meta property="og:url" content={url} />
+  <meta property="og:type" content="article" />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="description" content={description} />
+  <meta property="og:description" content={description} />
+  <meta property="image" content={image} />
+  <meta property="og:image" content={image} />
+  <meta property="twitter:image" content={image} />
+  <meta property="og:site_name" content="Platform Labor" />
+</svelte:head>
 
 <div class="above-fold">
   <div class="inner">
