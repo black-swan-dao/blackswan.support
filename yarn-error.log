@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/rasmus/.nvm/versions/node/v16.5.0/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js
+  /Users/rasmus/.nvm/versions/node/v16.5.0/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js add svelte-selec
 
 PATH: 
   /Users/rasmus/.nvm/versions/node/v16.5.0/bin:/Users/rasmus/opt/anaconda3/bin:/Users/rasmus/opt/anaconda3/condabin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/opt/X11/bin:/Library/Apple/usr/bin
@@ -14,12 +14,17 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/rasmus/Documents/dev/black-swan-dao/blackswan.support/package.json: Unexpected token } in JSON at position 714
-      at JSON.parse (<anonymous>)
-      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:1629:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
-      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:321:13
+  Error: https://registry.yarnpkg.com/svelte-selec: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:66145:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:140890:22)
+      at Request.emit (node:events:394:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:141862:10)
+      at Request.emit (node:events:394:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:513:28)
+      at IncomingMessage.emit (node:events:406:35)
+      at endReadableNT (node:internal/streams/readable:1331:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -47,7 +52,7 @@ npm manifest:
       "lodash": "^4.17.21",
       "node-sass": "^7.0.1",
       "slugify": "^1.6.5",
-      "svelte-preprocess": "^4.10.6",
+      "svelte-preprocess": "^4.10.6"
     }
   }
 
@@ -105,11 +110,6 @@ Lockfile:
     dependencies:
       mkdirp "^1.0.4"
       rimraf "^3.0.2"
-  
-  "@popperjs/core@^2.11.5":
-    version "2.11.5"
-    resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
-    integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
   
   "@rollup/pluginutils@^4.2.1":
     version "4.2.1"
@@ -2461,11 +2461,6 @@ Lockfile:
     version "3.4.0"
     resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
     integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
-  
-  uuid@^8.3.2:
-    version "8.3.2"
-    resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
-    integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
   
   validate-npm-package-license@^3.0.1:
     version "3.0.4"

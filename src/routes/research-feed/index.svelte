@@ -1,8 +1,43 @@
 <script>
-  import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
-  import get from "lodash/get.js"
+  import Select from "svelte-select"
+  import slugify from "slugify"
+  import FullFeedItem from "$lib/components/full-feed-item.svelte"
   import { fade } from "svelte/transition"
+  import flatten from "lodash/flatten.js"
+  import uniq from "lodash/uniq.js"
   export let researchFeed
+
+  let filteredFeed = researchFeed
+
+  const tags = uniq(
+    flatten(
+      researchFeed.map(item =>
+        item.tags && Array.isArray(item.tags) ? [...item.tags] : []
+      )
+    )
+  )
+
+  let items = tags.map(t => {
+    return {
+      label: t,
+      value: slugify(t, { lower: true }),
+    }
+  })
+
+  let filterTerm = undefined
+  $: if (filterTerm) {
+    history.pushState(null, null, "#" + filterTerm.value)
+    filteredFeed = researchFeed.filter(item => {
+      return item.tags && Array.isArray(item.tags)
+        ? item.tags.includes(filterTerm.label)
+        : false
+    })
+  } else {
+    filteredFeed = researchFeed
+  }
+
+  const handleSelect = event => (filterTerm = event.detail)
+  const handleClear = () => (filterTerm = undefined)
 </script>
 
 <div class="single">
@@ -13,25 +48,19 @@
   <div class="research-feed">
     <div class="inner">
       <div class="item header">
-        <span class="title">** Research feed **</span>
+        <div class="title">** Research feed **</div>
+        <div class="filter themed">
+          <Select
+            placeholder="Filter ↓"
+            {items}
+            on:select={handleSelect}
+            on:clear={handleClear}
+          />
+        </div>
+        <!-- <div class="filter">Filter<span class="arrow-down">↓</span></div> -->
       </div>
-      {#each researchFeed as item}
-        {#if item.fullPage}
-          <a
-            href={"research-feed/" + get(item, "slug.current", "")}
-            sveltekit:prefetch
-            class="item link"
-          >
-            <div class="title">* {item.title}</div>
-          </a>
-        {:else}
-          <a href={item.link} target="_blank" class="item link">
-            <div class="title">* {item.title}</div>
-            {#if item.source}
-              <div class="source">{item.source}<span class="icon">↗</span></div>
-            {/if}
-          </a>
-        {/if}
+      {#each filteredFeed as item (item._id)}
+        <FullFeedItem {item} />
       {/each}
     </div>
   </div>
@@ -39,6 +68,22 @@
 
 <style lang="scss">
   @import "src/lib/style/variables.scss";
+
+  .themed {
+    --border: 1px solid black;
+    --borderRadius: 0px;
+    --placeholderColor: black;
+    --background: var(--background-color);
+    --borderFocusColor: black;
+    --borderHoverColor: black;
+    --itemHoverBG: rgba(200, 200, 200, 1);
+    --listBorderRadius: 0px;
+    --itemIsActiveBG: rgba(180, 180, 180, 1);
+    --clearSelectColor: black;
+    --clearSelectFocusColor: black;
+    --clearSelectHoverColor: black;
+    --clearSelectWidth: 15px;
+  }
 
   .single {
     width: 900px;
@@ -118,7 +163,17 @@
       }
 
       &.header {
-        text-transform: uppercase;
+        .title {
+          text-transform: uppercase;
+        }
+        .filter {
+          font-size: 12px;
+          min-width: 16ch;
+          cursor: pointer;
+          .arrow-down {
+            margin-left: 4px;
+          }
+        }
       }
     }
   }

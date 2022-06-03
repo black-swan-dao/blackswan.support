@@ -38,6 +38,15 @@
 <style lang="scss" global>
   @import "src/lib/style/variables.scss";
 
+  input[type="text"] {
+    font-family: $NORMY;
+    font-size: 12px;
+
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+
   :root {
     --background-color: #000000;
   }

@@ -23,6 +23,7 @@
     "lodash": "^4.17.21",
     "node-sass": "^7.0.1",
     "slugify": "^1.6.5",
-    "svelte-preprocess": "^4.10.6"
+    "svelte-preprocess": "^4.10.6",
+    "svelte-select": "4.4.4"
   }
 }

@@ -3,6 +3,24 @@
   import has from "lodash/has.js"
   import { fade } from "svelte/transition"
   export let page
+  let authorList = false
+  let tagList = false
+
+  if (page.authors && page.authors.length > 0) {
+    authorList = page.authors
+      .reduce((acc, author) => {
+        return acc + `${author}, `
+      }, "")
+      .slice(0, -2)
+  }
+
+  if (page.tags && page.tags.length > 0) {
+    tagList = page.tags
+      .reduce((acc, tag) => {
+        return acc + "[" + tag + "] "
+      }, "")
+      .slice(0, -1)
+  }
 </script>
 
 <div class="single">
@@ -12,25 +30,21 @@
 
   <div class="header" in:fade={{ duration: 200, delay: 200 }}>
     <!-- TITLE -->
-    <h1>{page.title}</h1>
-    <!-- DATE -->
-    {#if page.date}
-      <div class="date">{page.date}</div>
-    {/if}
+    <h1>* {page.title}</h1>
     <!-- AUTHORS -->
-    {#if page.authors && page.authors.length > 0}
+    {#if authorList}
       <div class="authors">
-        {#each page.authors as author}
-          <span>{author}</span>
-        {/each}
+        _ {authorList}
       </div>
     {/if}
+    <!-- DATE -->
+    {#if page.date}
+      <div class="date">_ {page.date}</div>
+    {/if}
     <!-- TAGS -->
-    {#if page.tags && page.tags.length > 0}
+    {#if tagList}
       <div class="tags">
-        {#each page.tags as tag}
-          <span>{tag}</span>
-        {/each}
+        _ {tagList}
       </div>
     {/if}
   </div>

@@ -1,18 +1,14 @@
 <script>
-  import { onMount } from "svelte"
   import get from "lodash/get.js"
   export let item = {}
-
-  // __ VARIABLES
-  let linkEl = {}
-  let isDesktop = {}
   const linkUrl = item.fullPage
     ? "/research-feed/" + get(item, "slug.current", "")
     : item.link
   const target = item.fullPage ? "_self" : "_blank"
-
   let authorList = false
   let tagList = false
+
+  console.log(item)
 
   if (item.authors && item.authors.length > 0) {
     authorList = item.authors
@@ -29,55 +25,49 @@
       }, "")
       .slice(0, -1)
   }
-
-  const toolTipConfig = {
-    content: "",
-    arrow: false,
-    offset: [0, -20],
-    followCursor: "horizontal",
-    theme: "research",
-    delay: [300, null],
-  }
-
-  onMount(async () => {
-    isDesktop = window.matchMedia("(min-width: 700px)")
-    if (isDesktop.matches) {
-      console.log(item)
-      const config = toolTipConfig
-      if (authorList) {
-        config.content = authorList
-      }
-      if (item.date) {
-        config.content =
-          (config.content ? config.content + " / " : "") + item.date
-      }
-      if (tagList) {
-        config.content =
-          (config.content ? config.content + " / " : "") + tagList
-      }
-      if (config.content) {
-        tippy(linkEl, config)
-      }
-    }
-  })
 </script>
 
-<a bind:this={linkEl} href={linkUrl} {target} class="research-feed-item">
-  <div class="title">* {item.title}</div>
-  {#if item.source}
-    <div class="source">{item.source}<span class="icon">↗</span></div>
-  {/if}
+<a href={linkUrl} {target} class="full-feed-item">
+  <div class="top-row">
+    <div class="title">* {item.title}</div>
+    {#if item.source}
+      <div class="source">{item.source}<span class="icon">↗</span></div>
+    {/if}
+  </div>
+  <!-- {#if authorList || tagList} -->
+  <div class="bottom-row">
+    <div class="author">
+      {#if authorList}
+        _ <span class="inner">{authorList}</span>
+      {/if}
+    </div>
+    {#if tagList}
+      <div class="tags">{tagList}</div>
+    {/if}
+  </div>
+  <!-- {/if} -->
 </a>
 
 <style lang="scss">
   @import "src/lib/style/variables.scss";
 
-  .research-feed-item {
-    border-bottom: 1px solid white;
+  .full-feed-item {
+    border-bottom: 1px solid rgb(65, 63, 63);
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     cursor: pointer;
+
+    .top-row {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .bottom-row {
+      display: flex;
+      justify-content: space-between;
+    }
 
     .icon {
       position: relative;
@@ -90,6 +80,23 @@
     }
 
     .source {
+      font-size: 12px;
+      @include screen-size("small") {
+        display: none;
+      }
+    }
+
+    .title {
+      //   font-weight: bold;
+    }
+
+    .author {
+      .inner {
+        font-size: 12px;
+      }
+    }
+
+    .tags {
       font-size: 12px;
       @include screen-size("small") {
         display: none;
