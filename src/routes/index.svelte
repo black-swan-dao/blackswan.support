@@ -1,8 +1,8 @@
 <script>
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
   import MailingListForm from "$lib/components/mailing-list-form.svelte"
+  import ResearchFeedItem from "$lib/components/research-feed-item.svelte"
   import has from "lodash/has.js"
-  import get from "lodash/get.js"
   export let landing
   export let researchFeed
   console.log(landing)
@@ -66,22 +66,7 @@
         <span class="title">** Research feed **</span>
       </div>
       {#each researchFeed as item}
-        {#if item.fullPage}
-          <a
-            href={"research-feed/" + get(item, "slug.current", "")}
-            sveltekit:prefetch
-            class="item link"
-          >
-            <div class="title">* {item.title}</div>
-          </a>
-        {:else}
-          <a href={item.link} target="_blank" class="item link">
-            <div class="title">* {item.title}</div>
-            {#if item.source}
-              <div class="source">{item.source}<span class="icon">↗</span></div>
-            {/if}
-          </a>
-        {/if}
+        <ResearchFeedItem {item} />
       {/each}
       <a href="/research-feed" sveltekit:prefetch class="item link">
         <div class="title">... View all</div>
@@ -260,13 +245,6 @@
         cursor: pointer;
         &:hover {
           background: rgba(255, 255, 255, 0.3);
-        }
-      }
-
-      .source {
-        font-size: 12px;
-        @include screen-size("small") {
-          display: none;
         }
       }
 

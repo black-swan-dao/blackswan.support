@@ -134,4 +134,14 @@
       }
     }
   }
+
+  .tippy-box[data-theme~="research"] {
+    background: black;
+    border-radius: 0;
+    padding: 5px 5px;
+    color: white;
+    font-size: 12px;
+    border: 1px solid white;
+    z-index: 100;
+  }
 </style>
