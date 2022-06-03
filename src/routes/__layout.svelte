@@ -24,7 +24,6 @@
   onMount(async () => {
     settings = await loadData("*[_id == 'settings'][0]")
     setThemeColors(get(settings, "backgroundColor.hex", "#ff3c00;"))
-    console.log("settings", settings)
   })
 </script>
 

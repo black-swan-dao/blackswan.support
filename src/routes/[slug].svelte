@@ -62,6 +62,7 @@
       border: 1px solid black;
       cursor: pointer;
       transition: background 0.3s $transition;
+      user-select: none;
 
       &:hover {
         background: rgba(255, 255, 255, 0.3);

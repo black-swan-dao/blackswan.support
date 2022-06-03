@@ -8,8 +8,6 @@
   let authorList = false
   let tagList = false
 
-  console.log(item)
-
   if (item.authors && item.authors.length > 0) {
     authorList = item.authors
       .reduce((acc, author) => {

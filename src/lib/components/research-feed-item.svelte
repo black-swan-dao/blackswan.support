@@ -42,7 +42,6 @@
   onMount(async () => {
     isDesktop = window.matchMedia("(min-width: 700px)")
     if (isDesktop.matches) {
-      console.log(item)
       const config = toolTipConfig
       if (authorList) {
         config.content = authorList
