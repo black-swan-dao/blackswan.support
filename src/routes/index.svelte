@@ -45,15 +45,11 @@
     </div>
 
     <div class="links">
-      <a href="https://discord.com" target="_blank" class="item discord">
-        Discord<span class="icon">↗</span>
+      <a href={landing.linkOne.url} target="_blank" class="item discord">
+        {landing.linkOne.label}<span class="icon">↗</span>
       </a>
-      <a
-        href="https://twitter.com/blackswan_dao"
-        target="_blank"
-        class=" item twitter"
-      >
-        Twitter<span class="icon">↗</span>
+      <a href={landing.linkTwo.url} target="_blank" class=" item twitter">
+        {landing.linkTwo.label}<span class="icon">↗</span>
       </a>
     </div>
   </div>

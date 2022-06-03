@@ -1,6 +1,8 @@
 <footer>
   <a href="/" sveltekit:prefetch class="item"> BLACK SWAN</a>
-  <a href="https://discord.com" target="_blank" class="item">Discord</a>
+  <a href="https://discord.gg/bX5HF98PeF" target="_blank" class="item"
+    >Discord</a
+  >
   <a href="https://twitter.com/blackswan_dao" target="_blank" class="item">
     Twitter
   </a>
