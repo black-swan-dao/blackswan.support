@@ -109,7 +109,7 @@
     h2,
     h3,
     h4 {
-      font-size: 26px;
+      font-size: 16px;
       font-weight: bold;
       margin-bottom: 1em;
       margin-top: 1em;
