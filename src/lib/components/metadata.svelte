@@ -3,12 +3,9 @@
   import truncate from "lodash/truncate.js"
   import { toPlainText, urlFor } from "$lib/modules/sanity"
   import { page as pageStore } from "$app/stores"
+  import { settingsStore } from "$lib/modules/stores"
   export let page = {}
-  import {
-    BASE_URL,
-    DEFAULT_DESCRIPTION,
-    DEFAULT_IMAGE,
-  } from "$lib/modules/global.js"
+  import { BASE_URL } from "$lib/modules/global.js"
 
   const title = page.title ? page.title : "Black Swan"
 
@@ -16,14 +13,16 @@
   if (has(page, "content.content")) {
     description = truncate(toPlainText(page.content.content), { length: 160 })
   } else {
-    description = DEFAULT_DESCRIPTION
+    description = $settingsStore.metadataDescription
   }
+
+  $: console.log("$settingsStore", $settingsStore)
 
   const url = BASE_URL + $pageStore.url.pathname
 
   const image = has(page, "mainImage.asset")
     ? urlFor(page.mainImage)
-    : DEFAULT_IMAGE
+    : urlFor($settingsStore.metadataImage)
 </script>
 
 <svelte:head>

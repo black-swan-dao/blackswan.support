@@ -4,6 +4,7 @@
   import { loadData } from "$lib/modules/sanity.js"
   import Footer from "$lib/components/footer.svelte"
   import get from "lodash/get.js"
+  import { settingsStore } from "$lib/modules/stores"
 
   const changeThemeColor = color => {
     const metaThemeColor = document.querySelector("meta[name=theme-color]")
@@ -24,6 +25,7 @@
   onMount(async () => {
     settings = await loadData("*[_id == 'settings'][0]")
     setThemeColors(get(settings, "backgroundColor.hex", "#ff3c00;"))
+    settingsStore.set(settings)
   })
 </script>
 
