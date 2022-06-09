@@ -3,8 +3,8 @@
   import MailingListForm from "$lib/components/mailing-list-form.svelte"
   import ResearchFeedItem from "$lib/components/research-feed-item.svelte"
   import Metadata from "$lib/components/metadata.svelte"
-
   import has from "lodash/has.js"
+  import get from "lodash/get.js"
   export let landing
   export let researchFeed
 </script>
@@ -64,7 +64,7 @@
       <div class="item header">
         <span class="title">** Research feed **</span>
       </div>
-      {#each researchFeed as item}
+      {#each researchFeed.slice(0, get(landing, "feedItemsShown", 5)) as item}
         <ResearchFeedItem {item} />
       {/each}
       <a href="/research-feed" sveltekit:prefetch class="item link">
