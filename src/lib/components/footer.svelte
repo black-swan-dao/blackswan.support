@@ -1,5 +1,5 @@
 <footer>
-  <a href="/" sveltekit:prefetch class="item"> BLACK SWAN</a>
+  <a href="/" sveltekit:prefetch class="item"> Black Swan</a>
   <a href="https://discord.gg/bX5HF98PeF" target="_blank" class="item"
     >Discord</a
   >
