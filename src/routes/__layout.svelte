@@ -5,6 +5,7 @@
   import Footer from "$lib/components/footer.svelte"
   import get from "lodash/get.js"
   import { settingsStore } from "$lib/modules/stores"
+  import { page } from "$app/stores"
 
   const changeThemeColor = color => {
     const metaThemeColor = document.querySelector("meta[name=theme-color]")
@@ -21,6 +22,9 @@
     }
   }
 
+  let isResearchFeed = false
+  $: isResearchFeed = $page.routeId == "research-feed/[slug]"
+
   let settings = false
   onMount(async () => {
     settings = await loadData("*[_id == 'settings'][0]")
@@ -32,7 +36,7 @@
 {#if settings}
   <main in:fade={{ duration: 200, delay: 200 }}>
     <slot />
-    <Footer />
+    <Footer inverted={isResearchFeed} />
   </main>
 {/if}
 

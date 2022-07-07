@@ -26,9 +26,12 @@
 
 <Metadata {page} />
 
+<div class="background" />
+
 <div class="single">
   <div class="return" in:fade={{ duration: 200 }}>
     <a href="/" sveltekit:prefetch class="back">←</a>
+    <a href="/" sveltekit:prefetch class="black-swan">Black Swan</a>
   </div>
 
   <div class="header" in:fade={{ duration: 200, delay: 200 }}>
@@ -65,12 +68,26 @@
 <style lang="scss">
   @import "src/lib/style/variables.scss";
 
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: black;
+    background-image: url("/dust.png");
+  }
+
   .single {
     width: 900px;
     max-width: 95vw;
     min-height: 100vh;
     margin-left: auto;
     margin-right: auto;
+    color: white;
+    z-index: 10;
+    position: relative;
   }
 
   .return {
@@ -78,6 +95,9 @@
     padding-bottom: 20px;
     padding-left: 40px;
     padding-right: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 
     .back {
       display: inline-block;
@@ -88,12 +108,12 @@
       line-height: 25px;
       font-family: $NORMY;
       background: transparent;
-      color: black;
+      color: white;
       font-size: 16px;
       margin-bottom: 10px;
       height: 30px;
       border: none;
-      border: 1px solid black;
+      border: 1px solid white;
       cursor: pointer;
       transition: background 0.3s $transition;
       user-select: none;
@@ -109,9 +129,8 @@
   }
   .header {
     padding: 40px;
-    border-top: 1px solid black;
-
-    border-bottom: 1px solid black;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
 
     @include screen-size("small") {
       padding: 20px;

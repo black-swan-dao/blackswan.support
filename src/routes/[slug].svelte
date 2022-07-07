@@ -11,6 +11,7 @@
 <div class="single">
   <div class="return" in:fade={{ duration: 200 }}>
     <a href="/" sveltekit:prefetch class="back">←</a>
+    <a href="/" sveltekit:prefetch class="black-swan">Black Swan</a>
   </div>
 
   <div class="header" in:fade={{ duration: 200, delay: 200 }}>
@@ -44,6 +45,9 @@
     padding-bottom: 20px;
     padding-left: 40px;
     padding-right: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 
     .back {
       display: inline-block;

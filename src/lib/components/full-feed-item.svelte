@@ -29,7 +29,9 @@
   <div class="top-row">
     <div class="title">* {item.title}</div>
     {#if item.source}
-      <div class="source">{item.source}<span class="icon">↗</span></div>
+      <div class="source">
+        {item.source}{#if item.fullPage}<span class="icon">↗</span>{/if}
+      </div>
     {/if}
   </div>
   <!-- {#if authorList || tagList} -->
@@ -55,6 +57,7 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    word-spacing: -0.1em;
 
     .top-row {
       display: flex;
@@ -86,6 +89,8 @@
 
     .title {
       //   font-weight: bold;
+
+      max-width: calc(100% - 80px);
     }
 
     .author {

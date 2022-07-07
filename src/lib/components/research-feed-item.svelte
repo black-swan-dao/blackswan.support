@@ -64,7 +64,9 @@
 <a bind:this={linkEl} href={linkUrl} {target} class="research-feed-item">
   <div class="title">* {item.title}</div>
   {#if item.source}
-    <div class="source">{item.source}<span class="icon">↗</span></div>
+    <div class="source">
+      {item.source}{#if item.fullPage}<span class="icon">↗</span>{/if}
+    </div>
   {/if}
 </a>
 
@@ -77,6 +79,7 @@
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    word-spacing: -0.1em;
 
     .icon {
       position: relative;
