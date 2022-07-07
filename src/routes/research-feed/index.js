@@ -1,7 +1,7 @@
 import { loadData } from "$lib/modules/sanity.js"
 
 export const get = async (request) => {
-    const researchFeed = await loadData("*[_type == 'researchFeedItem'] | order(date desc)")
+    const researchFeed = await loadData("*[_type == 'researchFeedItem'] | order(!defined(date), date desc)")
     // | order(_createdAt desc)
     return { body: { researchFeed: researchFeed.status === 404 ? 'ERROR' : researchFeed } };
 };
