@@ -88,8 +88,8 @@ const serializers = {
             return h("figure", { className: "image" }, [
                 h("img", {
                     src: urlFor(get(props, "node.asset", ""))
-                        .width(800)
-                        .quality(90)
+                        .width(1200)
+                        .quality(100)
                         .auto("format")
                         .url(),
                 }),

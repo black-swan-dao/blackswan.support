@@ -58,7 +58,9 @@
   {#if has(page, "content.content")}
     <div class="content" in:fade={{ duration: 200, delay: 400 }}>
       {#if has(page, "mainImage.asset")}
-        <img src={urlFor(page.mainImage.asset).quality(90).width(800).url()} />
+        <img
+          src={urlFor(page.mainImage.asset).quality(100).width(1200).url()}
+        />
       {/if}
       {@html renderBlockText(page.content.content)}
     </div>
